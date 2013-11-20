@@ -6,6 +6,8 @@ $(document).ready(function () {
     var source = $("#eattherich").html()
       , template = Handlebars.compile(source)
       , html = template(result);
+
+      $("#appView").html(html);
   });
 
 });
