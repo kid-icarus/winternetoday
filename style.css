@@ -16,3 +16,7 @@ a {
 a:hover {
   color: #892276;
 }
+
+.twitter-tweet {
+  margin: 0 auto;
+}
