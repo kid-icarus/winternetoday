@@ -2,7 +2,7 @@
 
 $data = array(
   'link' => 'http://qwerqwer.com',
-  'twitter_ids' => array('402987048086142976', '402982981067104256'),
+  'twitterIds' => array('402987048086142976', '402982981067104256'),
 );
 
 print json_encode($data);
