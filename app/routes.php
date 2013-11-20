@@ -28,14 +28,15 @@ Route::get('/cron', function() {
 });
 
 
-Route::get('/test', function() {
-
-  $config = Config::get('twitter');
-  $twitter = App::make('Thujohn\Twitter\Twitter');
-  $twitter->reconfigure($config);
+Route::get('/tweets/{q?}', function($q = NULL) {
 
   
-  return $twitter->getSearch(array('q' => 'internet,win', 'count' => 200, 'format' => 'json'));
+
+  $tweet_model = App::make('Tweet');
+$tweets = $tweet_model->getTweets();
+  
+var_dump($tweets);
+  
 
 });
 

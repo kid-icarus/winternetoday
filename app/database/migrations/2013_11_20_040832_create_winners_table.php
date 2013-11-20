@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateWinnersTable extends Migration {
+
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('winners', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->timestamps();
+      $table->date('date');
+			$table->string('screen_name');
+			$table->string('tweet');
+			$table->text('link');
+		});
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::drop('winners');
+	}
+
+}
