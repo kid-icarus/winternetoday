@@ -42,10 +42,7 @@ class Tweet extends Eloquent {
           )
         )
       );
-  
-      
     }
-
 
   usort($tweets, function($a, $b) {
     if ($a['tweet_score'] == $b['tweet_score']) {

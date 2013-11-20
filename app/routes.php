@@ -24,20 +24,13 @@ Route::get('/data/{date?}', function($date = NULL) {
 
 Route::get('/cron', function() {
     return 'cron';
-
 });
 
 
 Route::get('/tweets/{q?}', function($q = NULL) {
-
-  
-
   $tweet_model = App::make('Tweet');
-$tweets = $tweet_model->getTweets($q);
-  
+  $tweets = $tweet_model->getTweets($q);
 var_dump($tweets);
-  
-
 });
 
 
