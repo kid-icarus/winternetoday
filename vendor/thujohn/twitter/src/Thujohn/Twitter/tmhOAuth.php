@@ -31,6 +31,7 @@ class tmhOAuth {
   }
 
   public function reconfigure($config=array()) {
+
     // default configuration options
     $this->config = array_merge(
       array(

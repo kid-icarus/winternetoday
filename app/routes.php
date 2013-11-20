@@ -26,3 +26,17 @@ Route::get('/cron', function() {
     return 'cron';
 
 });
+
+
+Route::get('/test', function() {
+
+  $config = Config::get('twitter');
+  $twitter = App::make('Thujohn\Twitter\Twitter');
+  $twitter->reconfigure($config);
+
+  
+  return $twitter->getSearch(array('q' => 'internet,win', 'count' => 200, 'format' => 'json'));
+
+});
+
+
