@@ -1,7 +1,11 @@
 $(document).ready(function () {
   var result = {};
-
   $.getJSON("api.php", renderz);
+  $('#refTweets').hide();
+  setTimeout(function() {
+    $('#refTweets').show();
+    $('#loading').remove();
+  },3000);
 });
 
 function renderz(json) {
