@@ -1883,5 +1883,49 @@
             "framework",
             "laravel"
         ]
+    },
+    {
+        "name": "thujohn/twitter",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/thujohn/twitter-l4.git",
+            "reference": "d39181e937f0e0d1a3641a9814d2b55d88969332"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/thujohn/twitter-l4/zipball/d39181e937f0e0d1a3641a9814d2b55d88969332",
+            "reference": "d39181e937f0e0d1a3641a9814d2b55d88969332",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "4.x",
+            "php": ">=5.3.0"
+        },
+        "time": "2013-11-12 17:37:59",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Thujohn\\Twitter": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "thujohn",
+                "email": "jonathan.thuau@gmail.com"
+            }
+        ],
+        "description": "Twitter API for Laravel 4",
+        "keywords": [
+            "laravel",
+            "laravel4",
+            "twitter"
+        ]
     }
 ]
