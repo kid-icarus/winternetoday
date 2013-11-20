@@ -23,7 +23,7 @@ class Tweet extends Eloquent {
     $q = $q == NULL ? ' "wins the internet" OR "win the internet" OR "won the internet" ' : $q;
 
     $tweets = array();
-    $tweet_data = $this->twitter->getSearch(array('q' => $q, 'lang'=>'en', 'count' => 200, 'format' => 'object'))->statuses;
+    $tweet_data = $this->twitter->getSearch(array('q' => $q, 'lang'=>'en', 'count' => 2000, 'format' => 'object'))->statuses;
   
     foreach($tweet_data as $tweet) {
       $tweets[] = array(
@@ -61,7 +61,8 @@ class Tweet extends Eloquent {
     $score = 500;
     $score += $params['favorites'] * 100;
     $score += $params['retweets'] * 100;
-    $score += $params['followers'];
+    $len = strlen($params['followers']);
+    $score +=  50 * $len;
 
     return $score; 
   }

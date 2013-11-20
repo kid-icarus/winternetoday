@@ -33,7 +33,7 @@ Route::get('/tweets/{q?}', function($q = NULL) {
   
 
   $tweet_model = App::make('Tweet');
-$tweets = $tweet_model->getTweets();
+$tweets = $tweet_model->getTweets($q);
   
 var_dump($tweets);
   
