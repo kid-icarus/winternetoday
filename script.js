@@ -14,7 +14,6 @@ function renderz(json) {
   for (var i = 0; i < result.twitterIds.length; i++ ) {
     $.getJSON('https://api.twitter.com/1/statuses/oembed.json?id=' + result.twitterIds[i] + '&callback=?', function(tweetJson) {
       $('#refTweets').append(tweetJson.html);
-      console.log(tweetJson);
     });
   }
 }
