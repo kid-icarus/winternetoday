@@ -11,7 +11,18 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
+
+
+Route::get('/data/{date?}', function($date = NULL) {
+  $data = array(
+    'link' => 'http://qwerqwer.com',
+    'twitter_ids' => array('402987048086142976', '402982981067104256'),
+  );
+  return json_encode($data);
+});
+
+
+Route::get('/cron', function() {
+    return 'cron';
+
 });
