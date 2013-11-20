@@ -19,4 +19,5 @@ a:hover {
 
 .twitter-tweet {
   margin: 0 auto;
+  transition: all 3500;
 }
