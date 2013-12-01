@@ -11,8 +11,6 @@
 |
 */
 
-
-
 Route::get('/data/{date?}', function($date = NULL) {
   $data = array(
     'link' => 'http://qwerqwer.com',

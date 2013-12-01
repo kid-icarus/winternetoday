@@ -12,7 +12,6 @@ class Day extends Eloquent {
   */
   protected $table = 'tweets';
   
-  
   public function post() {
     return $this->belongsTo('Day');
   }
