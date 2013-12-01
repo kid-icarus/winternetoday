@@ -44,16 +44,16 @@ class Tweet extends Eloquent {
       );
     }
 
-  usort($tweets, function($a, $b) {
-    if ($a['tweet_score'] == $b['tweet_score']) {
+    usort($tweets, function($a, $b) {
+      if ($a['tweet_score'] == $b['tweet_score']) {
         return 0;
-    }
-    return ($a['tweet_score'] < $b['tweet_score']) ? 1 : -1;
-    }
-  );
-  return $tweets;    
+      }
+      return ($a['tweet_score'] < $b['tweet_score']) ? 1 : -1;
+    });
+
+    return $tweets;
   }
- 
+
   protected function calculateScore($params) {
     $score = 500;
     $score += $params['favorites'] * 100;
