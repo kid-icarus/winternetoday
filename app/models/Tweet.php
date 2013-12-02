@@ -13,7 +13,7 @@ class Tweet extends Eloquent {
   protected $table = 'tweets';
   
   function __construct() {
-    $config = Config::get('twitter');
+    $config = Config::get('tweet');
     $this->twitter = App::make('Thujohn\Twitter\Twitter');
     $this->twitter->reconfigure($config);
   }
@@ -23,7 +23,10 @@ class Tweet extends Eloquent {
     $q = $q == NULL ? ' "wins the internet" OR "win the internet" OR "won the internet" ' : $q;
 
     $tweets = array();
-    $tweet_data = $this->twitter->getSearch(array('q' => $q, 'lang'=>'en', 'count' => 2000, 'format' => 'object'))->statuses;
+    $tweet_data = $this->twitter->getSearch(array('q' => $q, 'lang'=>'en', 'count' => 2000, 'format' => 'object'));
+
+    print_r($tweet_data);
+    die();
   
     foreach($tweet_data as $tweet) {
       $tweets[] = array(
