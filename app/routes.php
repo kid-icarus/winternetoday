@@ -26,7 +26,9 @@ Route::get('/cron', function() {
 
 Route::get('/cron-daily', function() {
 
-  $tweets = Tweet::where('id', '>', 0)->count();
+  $tweets = Tweet::group_by('link')
+    ->get(array('link', DB::raw('sum(score) as total_score')));
+    // ->whereRaw('tweet_created_at');
 
   return $tweets;
 
