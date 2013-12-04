@@ -12,6 +12,9 @@
 */
 
 Route::get('/data/{date?}', function($date = NULL) {
+
+  // Load winner from yesterday
+
   $data = array(
     'link' => 'http://qwerqwer.com',
     'twitter_ids' => array('402987048086142976', '402982981067104256'),
@@ -21,16 +24,26 @@ Route::get('/data/{date?}', function($date = NULL) {
 
 
 Route::get('/cron', function() {
-    return 'cron';
+
+  // Load latest tweets
+
+  return 'cron';
+
 });
 
 Route::get('/cron-daily', function() {
 
-  $tweets = Tweet::group_by('link')
-    ->get(array('link', DB::raw('sum(score) as total_score')));
-    // ->whereRaw('tweet_created_at');
+  // Only run once per day, after 11:30pm
 
-  return $tweets;
+  $top_tweet = Tweet::orderBy('link', 'DESC')
+    ->where(DB::raw('DATE(tweet_created_at)'), '=', DB::raw('DATE(NOW())'))
+    ->groupBy('link')
+    ->take(1)
+    ->get(array('link', DB::raw('sum(tweet_score) as total_score')));
+
+  // Save top tweet to winner table
+
+  return $top_tweet;
 
 });
 

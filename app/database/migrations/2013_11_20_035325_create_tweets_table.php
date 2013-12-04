@@ -16,15 +16,16 @@ class CreateTweetsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
+      $table->datetime('tweet_created_at');
       $table->string('twitter_user_id');
       $table->string('screen_name');
       $table->string('tweet_id');
       $table->string('tweet');
+      $table->string('link');
 			$table->integer('favorite_count');
 			$table->integer('retweet_count');
 			$table->integer('followers_count');
 			$table->float('tweet_score');
-
 		});
 	}
 
