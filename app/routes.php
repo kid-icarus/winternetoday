@@ -24,6 +24,14 @@ Route::get('/cron', function() {
     return 'cron';
 });
 
+Route::get('/cron-daily', function() {
+
+  $tweets = Tweet::where('id', '>', 0)->count();
+
+  return $tweets;
+
+});
+
 
 Route::get('/tweets/{q?}', function($q = NULL) {
   $tweet_model = App::make('Tweet');
