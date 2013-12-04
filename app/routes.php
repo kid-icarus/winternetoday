@@ -11,12 +11,9 @@
 |
 */
 
-Route::get('/data/{date?}', function($date = NULL) {
-  $data = array(
-    'link' => 'http://qwerqwer.com',
-    'twitter_ids' => array('402987048086142976', '402982981067104256'),
-  );
-  return json_encode($data);
+
+Route::get('/', function() {
+    return 'nothing to see here... yet.';
 });
 
 
@@ -26,9 +23,22 @@ Route::get('/cron', function() {
 
 
 Route::get('/tweets/{q?}', function($q = NULL) {
+  
   $tweet_model = App::make('Tweet');
+  $twitter_api = $tweet_model->getAPI();
+
+  $q = $q == NULL ? ' "wins the internet" OR "win the internet" OR "won the internet" ' : $q;
+
   $tweets = $tweet_model->getTweets($q);
-  var_dump($tweets);
+var_dump($tweets);
+exit;
+
+$tweet = current($tweets);
+$info = $twitter_api->getTweet($tweet['tweet_id']);
+
+var_dump($info);
+exit;
+
 });
 
 
