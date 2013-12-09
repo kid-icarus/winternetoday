@@ -37,9 +37,11 @@ Route::get('/cron-daily', function() {
 
   // Only run once per day, after 11:30pm
 
-  if (date('H:i') < '23:00') {
+  /*
+if (date('H:i') < '23:00') {
     return;
   }
+*/
 
   $top_tweet = Tweet::orderBy('link', 'DESC')
     ->where(DB::raw('DATE(tweet_created_at)'), '=', DB::raw('DATE(NOW())'))

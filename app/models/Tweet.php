@@ -36,23 +36,29 @@ class Tweet extends Eloquent {
 
     foreach($tweet_data as $tweet) {
       Tweet::$max_id = $tweet->id_str;
-      $tweets[] = array(
-        'tweet_id' => $tweet->id_str,
-        'tweet_created_at' => date('Y-m-d H:i:s', strtotime($tweet->created_at)),
-        'tweet' => $tweet->text,
-        'twitter_user_id' => $tweet->user->id_str,
-        'screen_name' => $tweet->user->screen_name,
-        'tweet_id' => $tweet->id_str,
-        'favorite_count' => $tweet->favorite_count ,
-        'followers_count' => $tweet->user->followers_count ,
-        'retweet_count' => $tweet->retweet_count ,
-        'tweet_score' => $this->calculateScore(array(
-           'favorites' => $tweet->favorite_count, 
-           'retweets' => $tweet->retweet_count, 
-           'followers' => $tweet->user->followers_count
-          )
-        )
-      );
+      
+      if (preg_match('/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/', $tweet->text, $matches)) {
+      
+        $tweets[] = array(
+          'tweet_id' => $tweet->id_str,
+          'tweet_created_at' => date('Y-m-d H:i:s', strtotime($tweet->created_at)),
+          'tweet' => $tweet->text,
+          'twitter_user_id' => $tweet->user->id_str,
+          'screen_name' => $tweet->user->screen_name,
+          'tweet_id' => $tweet->id_str,
+          'favorite_count' => $tweet->favorite_count ,
+          'followers_count' => $tweet->user->followers_count ,
+          'retweet_count' => $tweet->retweet_count ,
+          'tweet_score' => $this->calculateScore(array(
+             'favorites' => $tweet->favorite_count, 
+             'retweets' => $tweet->retweet_count, 
+             'followers' => $tweet->user->followers_count
+            )
+          ),
+          'link' => $matches[0],
+        );
+ 
+      }
     }
 
     usort($tweets, function($a, $b) {
