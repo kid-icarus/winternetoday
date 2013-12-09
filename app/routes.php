@@ -43,7 +43,7 @@ if (date('H:i') < '23:00') {
   }
 */
 
-  $top_tweet = Tweet::orderBy('link', 'DESC')
+  $top_tweet = Tweet::orderBy('total_score', 'DESC')
     ->where(DB::raw('DATE(tweet_created_at)'), '=', DB::raw('DATE(NOW())'))
     ->groupBy('link')
     ->take(1)
