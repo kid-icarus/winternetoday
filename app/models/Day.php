@@ -10,10 +10,6 @@ class Day extends Eloquent {
   *
   * @var string
   */
-  protected $table = 'tweets';
-  
-  public function post() {
-    return $this->belongsTo('Day');
-  }
+  protected $table = 'winners';
  
 }

@@ -51,6 +51,16 @@ if (date('H:i') < '23:00') {
 
   // Save top tweet to winner table
 
+  // Not sure why this isn't working:
+
+/*
+  $day = DB::table('winners')->where('date', date('Y-m-d'))->first();
+  $eloquent_winner = $day != NULL ? Day::find($day->id) : App::make('Day');
+  $eloquent_winner->link = $top_tweet->link;
+  $eloquent_winner->date = date('Y-m-d');
+  $eloquent_winner->save();
+*/
+
   return $top_tweet;
 
 });
