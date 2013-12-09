@@ -1,6 +1,12 @@
 $(document).ready(function () {
   var result = {};
-  $.getJSON("api.php", renderz);
+  var today = new Date();
+  var year = today.getFullYear();
+  var month = today.getMonth() + 1;
+  var day = today.getDate();
+  var path = year + '-' + month + '-' + day;
+
+  $.getJSON("public/data/" + path, renderz);
   $('#refTweets').hide();
   setTimeout(function() {
     $('#refTweets').show();
